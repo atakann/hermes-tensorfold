@@ -5,6 +5,8 @@ A [Hermes Agent](https://github.com/NousResearch/hermes-agent) plugin for [Tenso
 - **A model provider.** TensorFold appears in Hermes' model picker as "TensorFold". Hermes reads the served models from the server's `/v1/models` and each model's context window from the same list.
 - **A dashboard tab.** The web dashboard gets a TensorFold page with the server's model, speed, streams, token counts, MTP acceptance and memory, read from its `/health`, `/stats` and `/v1/models` every 2 s.
 
+![The TensorFold tab in Hermes' dashboard, against a DGX Spark](docs/dashboard-tab.png)
+
 The plugin talks to `http://127.0.0.1:8080/v1` by default, which is `tensorfold serve`'s own bind: the engine stays on loopback with its API key. Nothing changes the engine's tokens.
 
 ## Install
