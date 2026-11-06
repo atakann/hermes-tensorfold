@@ -48,6 +48,8 @@ Hermes' agent loop sends no `tool_choice`, so the server's `auto` applies. Some 
 
 Hermes Agent v0.23.0 and TensorFold 1.2.3 serving Qwen3.8-Flash-Next FP4-Local on a DGX Spark (GB10): `hermes plugins doctor` passes; the model picker lists TensorFold; chat and tool use work; a reply cancelled mid-stream frees its stream on the server, and the next request answers; with the server stopped Hermes reports an error, and it answers again once the server is back; the dashboard's numbers equal `/stats`.
 
+On an M1 Max (64 GB) with the macOS release serving Qwen3.8-27B MLX 4-bit behind a scoped key, the same checks pass with the endpoint and key only in `~/.hermes/.env`.
+
 ## License
 
 MIT
