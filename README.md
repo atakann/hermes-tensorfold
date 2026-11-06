@@ -5,7 +5,7 @@ A [Hermes Agent](https://github.com/NousResearch/hermes-agent) plugin for [Tenso
 - **A model provider.** TensorFold appears in Hermes' model picker as "TensorFold". Hermes reads the served models from the server's `/v1/models` and each model's context window from the same list.
 - **A dashboard tab.** The web dashboard gets a TensorFold page with the server's model, speed, streams, token counts, MTP acceptance and memory, read from its `/health`, `/stats` and `/v1/models` every 2 s.
 
-The plugin talks to `http://127.0.0.1:8000/v1` by default, which is `tensorfold serve`'s own bind: the engine stays on loopback with its API key. Nothing changes the engine's tokens.
+The plugin talks to `http://127.0.0.1:8080/v1` by default, which is `tensorfold serve`'s own bind: the engine stays on loopback with its API key. Nothing changes the engine's tokens.
 
 ## Install
 
@@ -21,16 +21,16 @@ echo 'TENSORFOLD_API_KEY=<the key you gave tensorfold serve>' >> ~/.hermes/.env
 hermes model        # choose TensorFold, then the served model
 ```
 
-A server started without `--api-key` takes any value. For the dashboard tab, start the server with `--dashboard` (it serves `/stats` only then), and open `hermes dashboard`.
+A server started without `--api-key` takes any value; a scoped key needs `inference,read` (chat and the tab's reads). For the dashboard tab, start the server with `--dashboard` (it serves `/stats` only then), and open `hermes dashboard`.
 
 ## Settings
 
 | Variable | Default | Meaning |
 |---|---|---|
 | `TENSORFOLD_API_KEY` | none | The key the server was started with |
-| `TENSORFOLD_BASE_URL` | `http://127.0.0.1:8000/v1` | The server's OpenAI-compatible root |
+| `TENSORFOLD_BASE_URL` | `http://127.0.0.1:8080/v1` | The server's OpenAI-compatible root |
 
-A server on another machine: keep it on that machine's loopback and forward a port, for example `ssh -N -L 8000:127.0.0.1:8000 my-gpu-box`. Then the default base URL works unchanged.
+A server on another machine: keep it on that machine's loopback and forward a port, for example `ssh -N -L 8080:127.0.0.1:8080 my-gpu-box`. Then the default base URL works unchanged.
 
 ## Tool calls
 

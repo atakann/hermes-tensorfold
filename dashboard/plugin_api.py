@@ -11,7 +11,7 @@ from fastapi import APIRouter
 router = APIRouter()
 
 # The provider's endpoint: TENSORFOLD_BASE_URL when set, else `tensorfold serve`'s loopback default.
-DEFAULT_BASE_URL = "http://127.0.0.1:8000/v1"
+DEFAULT_BASE_URL = "http://127.0.0.1:8080/v1"
 
 
 def _root() -> str:
