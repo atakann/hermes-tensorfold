@@ -1,0 +1,13 @@
+{
+  "name": "tensorfold",
+  "label": "TensorFold",
+  "description": "The TensorFold server behind the tensorfold provider: model, speed, streams, tokens and memory from its /stats",
+  "icon": "Cpu",
+  "version": "0.1.0",
+  "tab": {
+    "path": "/tensorfold",
+    "position": "after:skills"
+  },
+  "entry": "dist/index.js",
+  "api": "plugin_api.py"
+}

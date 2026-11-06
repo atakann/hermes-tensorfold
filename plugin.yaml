@@ -1,0 +1,6 @@
+name: tensorfold
+kind: model-provider
+version: 0.1.0
+description: TensorFold's native server as a model provider (models from its /v1/models, loopback by default)
+author: Ata
+requires_hermes: ">=0.23.0"
