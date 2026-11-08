@@ -2,10 +2,10 @@
 
 import asyncio
 import json
-import os
 import urllib.error
 import urllib.request
 
+from agent.secret_scope import get_secret
 from fastapi import APIRouter
 
 router = APIRouter()
@@ -15,12 +15,12 @@ DEFAULT_BASE_URL = "http://127.0.0.1:8080/v1"
 
 
 def _root() -> str:
-    base = (os.environ.get("TENSORFOLD_BASE_URL") or DEFAULT_BASE_URL).rstrip("/")
+    base = (get_secret("TENSORFOLD_BASE_URL", "") or DEFAULT_BASE_URL).rstrip("/")
     return base[: -len("/v1")] if base.endswith("/v1") else base
 
 
 def _get(path: str) -> dict:
-    key = os.environ.get("TENSORFOLD_API_KEY", "")
+    key = get_secret("TENSORFOLD_API_KEY", "") or ""
     req = urllib.request.Request(_root() + path, headers={"Authorization": f"Bearer {key}"} if key else {})
     try:
         with urllib.request.urlopen(req, timeout=5) as r:
